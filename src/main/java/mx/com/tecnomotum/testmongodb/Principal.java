@@ -14,6 +14,9 @@ import static com.mongodb.client.model.Projections.excludeId;
 import static com.mongodb.client.model.Projections.fields;
 import static com.mongodb.client.model.Projections.include;
 import com.mongodb.client.model.Sorts;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import org.bson.Document;
 
 /**
@@ -33,18 +36,18 @@ public class Principal {
         System.out.println("Primer object:" + myDoc.toJson());
         
         //Crear y añadir un nuevo documento a la colección
-//        Document nuevoDoc = new Document("name","CARLITOS bufé");
-//        nuevoDoc.append("borough","Elviña");
-//        nuevoDoc.append("cuisine", "Gourmet");
-//        List<Document> puntuaciones = new ArrayList<>();
-//        Document punt = new Document();
-//        punt.append("grade","A");
-//        punt.append("date",new Date());
-//        punt.append("score", 9);
-//        puntuaciones.add(punt);
-//        nuevoDoc.append("grades", puntuaciones);
-//        coleccion.insertOne(nuevoDoc);
-//        System.out.println("Total de elementos en la colección:" + coleccion.count());
+        Document nuevoDoc = new Document("name","CARLITOS bufé");
+        nuevoDoc.append("borough","Elviña");
+        nuevoDoc.append("cuisine", "Gourmet");
+        List<Document> puntuaciones = new ArrayList<>();
+        Document punt = new Document();
+        punt.append("grade","A");
+        punt.append("date",new Date());
+        punt.append("score", 9);
+        puntuaciones.add(punt);
+        nuevoDoc.append("grades", puntuaciones);
+        coleccion.insertOne(nuevoDoc);
+        System.out.println("Total de elementos en la colección:" + coleccion.count());
         
         //OBtener un objeto de una colección
         Document objetoResp = coleccion.find(eq("name","CARLITOS bufé")).first();
